@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="google-site-verification" content="BAAD_MEIN_AAYEGA" />
+  <meta name="description" content="Hemant Kumawat — Flutter Developer & Open Source Contributor" />
+  <title>Hemant Kumawat — Flutter Developer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0A0E1A;
+      color: #E8EAF0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 640px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      margin: 0 auto 24px;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .role {
+      font-size: 15px;
+      color: #7C85A2;
+      margin-bottom: 32px;
+      letter-spacing: 0.3px;
+    }
+
+    .role span {
+      color: #667eea;
+      font-weight: 500;
+    }
+
+    .packages {
+      background: #131929;
+      border: 1px solid #1E2740;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+
+    .packages-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #4A5568;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 16px;
+    }
+
+    .package-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid #1A2235;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .package-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .package-item:first-of-type {
+      padding-top: 0;
+    }
+
+    .package-item:hover { opacity: 0.75; }
+
+    .pkg-left { display: flex; flex-direction: column; gap: 4px; }
+
+    .pkg-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+
+    .pkg-desc {
+      font-size: 12px;
+      color: #4A5568;
+    }
+
+    .pkg-badge {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #1A2744;
+      color: #667eea;
+      border: 1px solid #2A3A60;
+      white-space: nowrap;
+    }
+
+    .links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+      border: 1px solid #1E2740;
+    }
+
+    .link-btn:hover { opacity: 0.75; }
+
+    .link-btn.github {
+      background: #131929;
+      color: #E8EAF0;
+    }
+
+    .link-btn.pubdev {
+      background: #1A2744;
+      color: #667eea;
+    }
+
+    .link-btn.linkedin {
+      background: #132233;
+      color: #3B9FE8;
+    }
+
+    .footer {
+      font-size: 12px;
+      color: #2A3350;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #22C55E;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="avatar">HK</div>
+
+    <h1>Hemant Kumawat</h1>
+    <p class="role">
+      Flutter Developer &amp; <span>Open Source Contributor</span>
+    </p>
+
+    <div class="packages">
+      <div class="packages-title">Open Source Packages</div>
+
+      <a class="package-item"
+         href="https://pub.dev/packages/dio_auth_guard"
+         target="_blank">
+        <div class="pkg-left">
+          <span class="pkg-name">dio_auth_guard</span>
+          <span class="pkg-desc">
+            Auto 401/403 handler + API Inspector for Dio
+          </span>
+        </div>
+        <span class="pkg-badge">v0.2.1</span>
+      </a>
+
+    </div>
+
+    <div class="links">
+      <a class="link-btn github"
+         href="https://github.com/hemantkumawat9977"
+         target="_blank">
+        GitHub
+      </a>
+      <a class="link-btn pubdev"
+         href="https://pub.dev/publishers/hemantkumawat9977.github.io/packages"
+         target="_blank">
+        pub.dev
+      </a>
+      <a class="link-btn linkedin"
+         href="https://linkedin.com/in/YOUR_LINKEDIN"
+         target="_blank">
+        LinkedIn
+      </a>
+    </div>
+
+    <p class="footer">
+      <span class="dot"></span>
+      Building Flutter tools — one package at a time
+    </p>
+
+  </div>
+</body>
+</html>
