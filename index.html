@@ -4,231 +4,845 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="google-site-verification" content="SVf87qPek9WQoH3gmz8Q7U-MuODG9eWdfRBgxIJiZbs" />
-  <meta name="description" content="Hemant Kumawat — Flutter Developer & Open Source Contributor" />
-  <title>Hemant Kumawat — Flutter Developer</title>
+  <meta name="description" content="Hemant Kumawat — Senior Mobile Engineer | Flutter, Android Native, React Native | Fintech, Dating, Ride, IoT & Shopify Apps" />
+  <title>Hemant Kumawat — Mobile Engineer</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #070B14;
+      --bg2: #0D1220;
+      --bg3: #111827;
+      --border: #1C2540;
+      --border2: #243060;
+      --text: #E8EAF6;
+      --muted: #5B6480;
+      --muted2: #8892B0;
+      --accent: #6C63FF;
+      --accent2: #7C3AED;
+      --green: #22C55E;
+      --blue: #3B9FE8;
+      --pink: #EC4899;
+      --amber: #F59E0B;
+      --teal: #14B8A6;
+    }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0A0E1A;
-      color: #E8EAF0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
+      line-height: 1.6;
     }
 
-    .container {
-      max-width: 640px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .avatar {
-      width: 88px;
-      height: 88px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      font-weight: 700;
-      color: white;
-      margin: 0 auto 24px;
-      letter-spacing: 1px;
-    }
-
-    h1 {
-      font-size: 28px;
-      font-weight: 700;
-      color: #FFFFFF;
-      margin-bottom: 8px;
-      letter-spacing: -0.5px;
-    }
-
-    .role {
-      font-size: 15px;
-      color: #7C85A2;
-      margin-bottom: 32px;
-      letter-spacing: 0.3px;
-    }
-
-    .role span {
-      color: #667eea;
-      font-weight: 500;
-    }
-
-    .packages {
-      background: #131929;
-      border: 1px solid #1E2740;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
-      text-align: left;
-    }
-
-    .packages-title {
-      font-size: 11px;
-      font-weight: 600;
-      color: #4A5568;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      margin-bottom: 16px;
-    }
-
-    .package-item {
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7, 11, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 0;
-      border-bottom: 1px solid #1A2235;
+    }
+
+    .nav-logo {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted2);
       text-decoration: none;
-      transition: opacity 0.2s;
+      transition: color 0.2s;
     }
 
-    .package-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
     }
 
-    .package-item:first-of-type {
-      padding-top: 0;
+    .avatar-wrap { flex-shrink: 0; }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 1px;
+      position: relative;
     }
 
-    .package-item:hover { opacity: 0.75; }
+    .avatar::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      z-index: -1;
+      opacity: 0.4;
+      filter: blur(8px);
+    }
 
-    .pkg-left { display: flex; flex-direction: column; gap: 4px; }
+    .status-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 14px;
+      height: 14px;
+      background: var(--green);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+    }
 
-    .pkg-name {
+    .hero-content { flex: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--green);
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--muted2);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--muted2);
+      border-color: var(--border2);
+    }
+
+    .btn-outline:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    /* ── STATS ── */
+    .stats-bar {
+      max-width: 880px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .stat-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── SECTION ── */
+    section {
+      max-width: 880px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .skill-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .skill-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .skill-title {
       font-size: 14px;
       font-weight: 600;
-      color: #FFFFFF;
+      color: var(--text);
+    }
+
+    .skill-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 4px;
+      border: 1px solid var(--border2);
+      color: var(--muted2);
+      background: rgba(108, 99, 255, 0.05);
+    }
+
+    /* ── DOMAINS ── */
+    .domains-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .domain-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .domain-card:hover { border-color: var(--border2); }
+
+    .domain-emoji {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .domain-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .domain-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── PACKAGES ── */
+    .package-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 12px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.2s;
+    }
+
+    .package-card:hover {
+      border-color: var(--accent);
+      background: rgba(108, 99, 255, 0.04);
+    }
+
+    .pkg-left { flex: 1; }
+
+    .pkg-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .pkg-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .pkg-version {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(108, 99, 255, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(108, 99, 255, 0.25);
     }
 
     .pkg-desc {
-      font-size: 12px;
-      color: #4A5568;
-    }
-
-    .pkg-badge {
-      font-size: 11px;
-      font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: #1A2744;
-      color: #667eea;
-      border: 1px solid #2A3A60;
-      white-space: nowrap;
-    }
-
-    .links {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-
-    .link-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      text-decoration: none;
       font-size: 13px;
-      font-weight: 500;
-      transition: opacity 0.2s;
-      border: 1px solid #1E2740;
+      color: var(--muted2);
+      margin-bottom: 10px;
     }
 
-    .link-btn:hover { opacity: 0.75; }
-
-    .link-btn.github {
-      background: #131929;
-      color: #E8EAF0;
+    .pkg-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
-    .link-btn.pubdev {
-      background: #1A2744;
-      color: #667eea;
+    .pkg-feature {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--bg3);
+      color: var(--muted);
+      border: 1px solid var(--border);
     }
 
-    .link-btn.linkedin {
-      background: #132233;
-      color: #3B9FE8;
+    .pkg-arrow {
+      font-size: 20px;
+      color: var(--muted);
+      flex-shrink: 0;
     }
 
-    .footer {
-      font-size: 12px;
-      color: #2A3350;
+    /* ── EXPERIENCE ── */
+    .exp-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
     }
 
-    .dot {
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      background: #22C55E;
+    .exp-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .exp-dot {
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      margin-right: 6px;
-      vertical-align: middle;
+      background: var(--accent);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .exp-tail {
+      width: 1px;
+      flex: 1;
+      background: var(--border);
+      margin-top: 6px;
+    }
+
+    .exp-content { flex: 1; padding-bottom: 8px; }
+
+    .exp-role {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .exp-period {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-text span {
+      color: var(--accent);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 48px 20px 40px;
+      }
+
+      h1 { font-size: 28px; }
+
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .domains-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .package-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .pkg-arrow { display: none; }
+
+      .nav-links { display: none; }
+
+      section { padding: 0 20px; }
+    }
+
+    @media (max-width: 400px) {
+      .domains-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <div class="avatar">HK</div>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">HK<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#domains">Domains</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+  </nav>
 
-    <h1>Hemant Kumawat</h1>
-    <p class="role">
-      Flutter Developer &amp; <span>Open Source Contributor</span>
-    </p>
-
-    <div class="packages">
-      <div class="packages-title">Open Source Packages</div>
-
-      <a class="package-item"
-         href="https://pub.dev/packages/dio_auth_guard"
-         target="_blank">
-        <div class="pkg-left">
-          <span class="pkg-name">dio_auth_guard</span>
-          <span class="pkg-desc">
-            Auto 401/403 handler + API Inspector for Dio
-          </span>
-        </div>
-        <span class="pkg-badge">v0.2.1</span>
-      </a>
-
+  <!-- HERO -->
+  <div class="hero">
+    <div class="avatar-wrap">
+      <div class="avatar" style="position:relative">
+        HK
+        <div class="status-dot"></div>
+      </div>
     </div>
-
-    <div class="links">
-      <a class="link-btn github"
-         href="https://github.com/hemantkumawat9977"
-         target="_blank">
-        GitHub
-      </a>
-      <a class="link-btn pubdev"
-         href="https://pub.dev/publishers/hemantkumawat9977.github.io/packages"
-         target="_blank">
-        pub.dev
-      </a>
-      <a class="link-btn linkedin"
-         href="https://www.linkedin.com/in/hemant-kumawat-922312235/"
-         target="_blank">
-        LinkedIn
-      </a>
+    <div class="hero-content">
+      <div class="hero-badge">Available for opportunities</div>
+      <h1>Hemant Kumawat</h1>
+      <div class="hero-title">Senior Mobile Engineer</div>
+      <p class="hero-desc">
+        4+ years building production-grade mobile applications across
+        Flutter, Android Native &amp; React Native. Specialized in
+        Fintech, Dating, Ride-hailing, IoT &amp; Shopify ecosystems.
+        Open source contributor on pub.dev.
+      </p>
+      <div class="hero-links">
+        <a class="btn btn-primary"
+           href="https://pub.dev/packages/dio_auth_guard"
+           target="_blank">
+          pub.dev packages
+        </a>
+        <a class="btn btn-outline"
+           href="https://github.com/hemantkumawat9977"
+           target="_blank">
+          GitHub
+        </a>
+        <a class="btn btn-outline"
+           href="https://www.linkedin.com/in/hemant-kumawat-922312235/"
+           target="_blank">
+          LinkedIn
+        </a>
+      </div>
     </div>
-
-    <p class="footer">
-      <span class="dot"></span>
-      Building Flutter tools — one package at a time
-    </p>
-
   </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-number">4+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">15+</div>
+      <div class="stat-label">Apps Shipped</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Domains Mastered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">1</div>
+      <div class="stat-label">pub.dev Packages</div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Technical Stack</div>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon" style="background:rgba(108,99,255,0.12)">🐦</div>
+          <div>
+            <div class="skill-title">Flutter</div>
+            <div class="skill-sub">Primary framework</div>
+          </div>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">BLoC / Cubit</span>
+          <span class="tag">Riverpod</span>
+          <span class="tag">GetIt / Injectable</span>
+          <span class="tag">GoRouter</span>
+          <span class="tag">Dio / Retrofit</span>
+          <span class="tag">Freezed</span>
+          <span class="tag">Clean Architecture</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon" style="background:rgba(34,197,94,0.1)">🤖</div>
+          <div>
+            <div class="skill-title">Android Native</div>
+            <div class="skill-sub">Kotlin · Java</div>
+          </div>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">Kotlin</span>
+          <span class="tag">Jetpack Compose</span>
+          <span class="tag">MVVM</span>
+          <span class="tag">Room DB</span>
+          <span class="tag">WorkManager</span>
+          <span class="tag">Coroutines</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon" style="background:rgba(59,159,232,0.1)">⚛️</div>
+          <div>
+            <div class="skill-title">React Native</div>
+            <div class="skill-sub">JavaScript · TypeScript</div>
+          </div>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Redux Toolkit</span>
+          <span class="tag">React Query</span>
+          <span class="tag">Expo</span>
+          <span class="tag">React Navigation</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <div class="skill-icon" style="background:rgba(245,158,11,0.1)">🛠️</div>
+          <div>
+            <div class="skill-title">Tools & DevOps</div>
+            <div class="skill-sub">CI/CD · Cloud</div>
+          </div>
+        </div>
+        <div class="skill-tags">
+          <span class="tag">Firebase</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">GraphQL</span>
+          <span class="tag">Git</span>
+          <span class="tag">Fastlane</span>
+          <span class="tag">Figma</span>
+          <span class="tag">Postman</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DOMAINS -->
+  <section id="domains">
+    <div class="section-label">Domain Expertise</div>
+    <div class="domains-grid">
+
+      <div class="domain-card">
+        <span class="domain-emoji">💳</span>
+        <div class="domain-name">Fintech</div>
+        <div class="domain-desc">
+          Payments, wallets, KYC flows, secure transactions &amp; financial dashboards
+        </div>
+      </div>
+
+      <div class="domain-card">
+        <span class="domain-emoji">💘</span>
+        <div class="domain-name">Dating Apps</div>
+        <div class="domain-desc">
+          Real-time matching, chat, swipe UX, subscription &amp; profile systems
+        </div>
+      </div>
+
+      <div class="domain-card">
+        <span class="domain-emoji">🚗</span>
+        <div class="domain-name">Ride Hailing</div>
+        <div class="domain-desc">
+          Live tracking, maps integration, driver &amp; rider flows, surge pricing
+        </div>
+      </div>
+
+      <div class="domain-card">
+        <span class="domain-emoji">📡</span>
+        <div class="domain-name">IoT</div>
+        <div class="domain-desc">
+          BLE / WiFi device control, real-time sensor data, hardware bridging
+        </div>
+      </div>
+
+      <div class="domain-card">
+        <span class="domain-emoji">🛍️</span>
+        <div class="domain-name">Shopify</div>
+        <div class="domain-desc">
+          Storefront API, custom checkout, product catalog &amp; order management
+        </div>
+      </div>
+
+      <div class="domain-card">
+        <span class="domain-emoji">🔧</span>
+        <div class="domain-name">Open Source</div>
+        <div class="domain-desc">
+          pub.dev packages solving real developer problems — used in production apps
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="packages">
+    <div class="section-label">Open Source Packages</div>
+
+    <a class="package-card"
+       href="https://pub.dev/packages/dio_auth_guard"
+       target="_blank">
+      <div class="pkg-left">
+        <div class="pkg-top">
+          <span class="pkg-name">dio_auth_guard</span>
+          <span class="pkg-version">v0.2.1</span>
+        </div>
+        <div class="pkg-desc">
+          Auto 401/403 handler for Dio — cancels all in-flight requests,
+          navigates to login, plus built-in API Inspector with cURL support
+          &amp; type mismatch detection.
+        </div>
+        <div class="pkg-features">
+          <span class="pkg-feature">Auto 401/403</span>
+          <span class="pkg-feature">Cancel in-flight requests</span>
+          <span class="pkg-feature">API Inspector</span>
+          <span class="pkg-feature">cURL copy</span>
+          <span class="pkg-feature">Type mismatch alerts</span>
+          <span class="pkg-feature">Debug only</span>
+        </div>
+      </div>
+      <div class="pkg-arrow">→</div>
+    </a>
+
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-line">
+        <div class="exp-dot"></div>
+        <div class="exp-tail"></div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Senior Flutter Developer</div>
+        <div class="exp-company">Production Apps — Garage88 &amp; Propmates</div>
+        <div class="exp-period">2022 — Present · 2+ years</div>
+        <div class="exp-tags">
+          <span class="tag">Flutter</span>
+          <span class="tag">BLoC / Cubit</span>
+          <span class="tag">GoRouter</span>
+          <span class="tag">Clean Architecture</span>
+          <span class="tag">Dio</span>
+          <span class="tag">GetIt</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-line">
+        <div class="exp-dot" style="background:var(--blue)"></div>
+        <div class="exp-tail"></div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Android Native Developer</div>
+        <div class="exp-company">Multiple Client Projects</div>
+        <div class="exp-period">2021 — 2023 · 2 years</div>
+        <div class="exp-tags">
+          <span class="tag">Kotlin</span>
+          <span class="tag">Jetpack</span>
+          <span class="tag">MVVM</span>
+          <span class="tag">Coroutines</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-line">
+        <div class="exp-dot" style="background:var(--teal)"></div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">React Native Developer</div>
+        <div class="exp-company">Freelance &amp; Agency Projects</div>
+        <div class="exp-period">2020 — 2022 · 2 years</div>
+        <div class="exp-tags">
+          <span class="tag">React Native</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Redux</span>
+          <span class="tag">Expo</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-text">
+      Built with ❤️ by <span>Hemant Kumawat</span> ·
+      Flutter Developer &amp; Open Source Contributor
+    </p>
+  </footer>
+
 </body>
 </html>
